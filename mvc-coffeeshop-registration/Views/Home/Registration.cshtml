@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form asp-method="post" asp-action="Result">
+    @*Input fields*@
+    <p>First Name</p>
+    <input type="text" name="FirstName" />
+    <p>Last Name</p>
+    <input type="text" name="LastName" />
+    <p>Email</p>
+@*Escape Razor "@" for regex entry with "@@"*@
+    <input type="text" name="Email" pattern="[a-z0-9._%+\-]+@@[a-z0-9.\-]+\.[a-z]{2,}$" />
+    <p>Password</p>
+    <input type="password" name="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"/>
+    @*Checkbox:
+        Buggy Razor thing: add value="true" so that Razor recognizes it as a value*@
+    <p>Is it your birthday?<input type="checkbox" name="Birthday" value="true" /></p>
+
+
+    @*Submit button*@
+    <input type="submit" />
+</form>
+
+<p>This is test code.</p>
+

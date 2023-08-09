@@ -18,10 +18,19 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Registration()
     {
         return View();
     }
+
+    public IActionResult Result(User u)
+    {
+        return View(u);
+    }
+
+
+
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
