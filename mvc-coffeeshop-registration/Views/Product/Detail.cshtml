@@ -1,0 +1,12 @@
+﻿
+@model Product
+
+<h1 asp-method="get" asp-action="Detail" asp-route-id="@Model.Id">@Model.Name</h1>
+<p>@Model.Description</p>
+<h5>@Model.Price</h5>
+<p>Category: @Model.Category</p>
+
+
+@*<h1>@Model.Name</h1>*@
+
+
