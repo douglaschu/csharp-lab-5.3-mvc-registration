@@ -1,0 +1,30 @@
+﻿How to use OOP to call in foreign key table,
+and not use ViewData or ViewBag
+
+new model:
+Class DisplayObj{
+	public Post displayPost {get set}
+	public List<Comment> displayComments {get set}
+}
+
+
+
+in controller:
+public IActionResult Details(){
+	DisplayObj result = new DisplayObj();
+	result.DisplayPost = dbContext.Post...
+	result.DisplayComments = dbContext.Comments...
+
+	return View(result)
+}
+
+
+
+in view:
+@model DisplayObj
+
+<h1>@Model.DisplayPost.Username</h1>
+
+@{
+	foreach(comment c in Model.DisplayComments)
+}

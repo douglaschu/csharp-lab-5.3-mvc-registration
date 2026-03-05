@@ -13,13 +13,25 @@
 @{
     foreach (Product p in Model)
     {
-            <a class="nav-link text-dark p-0" asp-action="Detail" asp-route-id="@p.Id">
-                <div class="card">
-                    <h2>@p.Name</h2>
-                    
-                </div>
+        <a class="nav-link text-dark p-0" asp-action="Detail" asp-route-id="@p.Id">
+            <div class="card">
+                <h2>@p.Name</h2>
+                <p>@p.Price</p>
+            </div>
+        </a>
+    }
+}
 
-            </a>
+@*Index view by category*@
+@{
+    List<Product> DistinctCategories = Model.DistinctBy(p => p.Category).ToList();
+    foreach (Product c in DistinctCategories)
+    {
+        <h1>@c.Category</h1>
+        foreach (Product p in Model.Where(p => p.Category == c.Category))
+        {
+            <p><a asp-action="detail" asp-route-id="@p.Id">@p.Name $@p.Price</a></p>
+        }
     }
 }
 

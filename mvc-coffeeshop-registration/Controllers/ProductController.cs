@@ -9,20 +9,22 @@ namespace mvc_coffeeshop_registration.Controllers
 {
     public class ProductController : Controller
     {
-
         private CoffeeshopDbContext _coffeeshopDbContext = new CoffeeshopDbContext();
+        //Call in the database
 
         public IActionResult Index()
         {
             List<Product> result = _coffeeshopDbContext.Products.ToList();
+            //Make a list of the products from the database
+            //Use the ToList() method
             return View(result);
         }
 
         public IActionResult Detail(int id)
         {
-            Product p = _coffeeshopDbContext.Products.FirstOrDefault(x => x.Id == id );
-            
-            return View(p);
+            Product result = _coffeeshopDbContext.Products.FirstOrDefault(x => x.Id == id);
+
+            return View(result); =
         }
     }
 }
